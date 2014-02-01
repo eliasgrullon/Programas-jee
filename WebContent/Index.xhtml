@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head></h:head> 
+<body>
+
+
+
+<!-- (#{manejador.buscando})?#{manejador.obtenerResultado()}: -->
+<h:dataTable var="type" value="#{(manejador.buscando)?manejador.obtenerResultado():manejador.clientes}"  border="1"  cellspacing="0"  id="tblCliente">
+<h:column>
+<f:facet name="header">ID</f:facet>
+#{type.id}
+</h:column>
+
+<h:column>
+<f:facet name="header">Nombre</f:facet>
+#{type.nombre}
+
+</h:column>
+
+<h:column>
+<f:facet name="header">Apellido</f:facet>
+#{type.apellido}
+
+</h:column>
+
+<h:column>
+<f:facet name="header">Cedula</f:facet>
+#{type.cedula}
+
+</h:column>
+
+<h:column>
+<f:facet name="header">Tipo de Seguro</f:facet>
+<h:outputText value="#{type.tipoSeguroMedico}" />
+
+</h:column>
+
+<h:column>
+<f:facet name="header">Editar</f:facet>
+<h:form>
+<h:commandLink action="#{manejador.asignarCLiente(type.id)}" value="Editar" /> 
+</h:form>
+</h:column>
+
+<h:column>
+<f:facet name="header">Editar</f:facet>
+<h:form>
+<h:commandButton value="Eliminar" action="#{manejador.eliminarCliente(type.id)}" >
+
+</h:commandButton>
+</h:form>
+</h:column>
+
+</h:dataTable>
+<h:form>
+
+<table>
+<tr>
+<td>
+Buscar:<h:inputText value="#{manejador.criterio}" />
+<h:commandButton value="Buscar" action="#{manejador.buscar()}" />
+</td>
+<td>
+<h:commandButton value="Nuevo" action="#{manejador.nuevo()}" />
+</td>
+</tr>
+</table>
+</h:form>
+</body> 
+
+
+</html>

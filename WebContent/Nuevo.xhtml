@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+<!-- <h:outputStylesheet library="css"  name="Style.css"/> -->
+</h:head> 
+<body> 
+
+<fieldset>
+<legend>Nuevo Cliente</legend>
+<h:form>
+<table>
+
+<tr>
+	<td>Nombre:</td>
+	<td><h:inputText value="#{manejador.nombre}" required="true" requiredMessage="Diga el Nombre" id="nombre"/><br/>
+	<h:message for="nombre" styleClass="error"/>
+	</td>
+</tr>
+
+<tr>
+	<td>Apellido:</td>
+	<td><h:inputText value="#{manejador.apellido}"  /></td>
+</tr>
+
+<tr>
+	<td>Cedula:</td>
+	<td><h:inputText value="#{manejador.cedula}" required="true" requiredMessage="Diga la cedula" maxlength="11"   
+	validatorMessage="Solo escriba Numeros sin guion de separacion"  id="cedula"  converterMessage="Solo escriba Numeros sin guion de separacion" >
+	</h:inputText><br />
+	<h:message for="cedula" styleClass="error"/>
+	</td>
+</tr>
+
+<tr>
+	<td>Tipo de seguro Medico:</td>
+	<td>
+	<h:selectOneMenu value="#{manejador.tipoSeguroMedico}">
+		<f:selectItems value="#{manejador.tipos}"/>
+	
+	</h:selectOneMenu>
+	
+	</td>
+</tr>
+
+<tr >
+<td align="center" colspan="2">
+<h:commandButton value="Guardar" action="#{manejador.procesarNuevoCliente()}" />
+<h:commandButton value="Cancelar" action="#{manejador.cancelar()}" />
+</td>
+</tr>
+
+</table>
+</h:form>
+</fieldset>
+
+</body> 
+</html>
